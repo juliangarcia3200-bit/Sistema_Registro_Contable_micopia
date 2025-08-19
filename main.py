@@ -12,3 +12,6 @@ def fechas():
     fecha_inicio = input("Fecha de inicio (DD/MM/AAAA): ")
     fecha_fin = "Fecha de fin (DD/MM/AAAA): "
     return fecha_inicio, fecha_fin
+
+julian = datos()
+print("Datos ingresados:", julian)
