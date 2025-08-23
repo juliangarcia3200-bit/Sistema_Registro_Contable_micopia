@@ -83,6 +83,9 @@ def calcular_impuesto():
     else:
         print("Sin saldo a pagar ni a favor.")
 
+renta = calcular_impuesto() 
+
+
 def datos():
     print("Ingrese los datos contables:")
     cuenta = input("Cuenta: ")
