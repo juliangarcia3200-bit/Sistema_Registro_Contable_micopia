@@ -14,20 +14,20 @@ def calcular_facturas(productos):
         producto['subtotal'] = subtotal_producto                                                        
         subtotal += subtotal_producto
 
-iva = subtotal * tasa_iva
+    iva = subtotal * tasa_iva
 
-total_factura = subtotal + iva
+    total_factura = subtotal + iva
        
     return subtotal, iva, total_factura
 
 
 #Ejemplo de uso
 productos = [
-    {'nombre': 'resma', 'precio': ´25000´, 'cantidad': 2},        
-    {'nombre': 'calculadora', 'precio': ´28000´,  'cantidad': 3},
+    {'nombre': 'resma', 'precio': 25000, 'cantidad': 2},        
+    {'nombre': 'calculadora', 'precio': 28000,  'cantidad': 3},
 ]
 
-susbtotal, iva, total_factura = calcular_facturas(productos)
+subtotal, iva, total_factura = calcular_facturas(productos)
 print(f"Subtotal: {subtotal:.2f}")  
 print(f"IVA: {iva:.2f}")
 print(f"Total factura: {total_factura:.2f}")    
