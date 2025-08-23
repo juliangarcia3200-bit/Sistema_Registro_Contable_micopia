@@ -1,36 +1,32 @@
+import pandas as pd
+print("Sistema de Registro Contable")
 
-import pandas as pd 
-print("Sistema de Registro Contable")   
-
-#facturación   
-
-def calcular_facturas(productos): 
+# facturación
+def calcular_facturas(productos):
     subtotal = 0
     tasa_iva = 0.19
 
-    #Calcular el suntotal de los productos
+    # Calcular el subtotal de los productos
     for producto in productos:
         subtotal_producto = producto['precio'] * producto['cantidad']
-        producto['subtotal'] = subtotal_producto                                                        
+        producto['subtotal'] = subtotal_producto
         subtotal += subtotal_producto
 
     iva = subtotal * tasa_iva
-
     total_factura = subtotal + iva
-       
     return subtotal, iva, total_factura
 
 
-#Ejemplo de uso
+# Ejemplo de uso
 productos = [
-    {'nombre': 'resma', 'precio': 25000, 'cantidad': 2},        
+    {'nombre': 'resma', 'precio': 25000, 'cantidad': 2},
     {'nombre': 'calculadora', 'precio': 28000,  'cantidad': 3},
 ]
 
 subtotal, iva, total_factura = calcular_facturas(productos)
-print(f"Subtotal: {subtotal:.2f}")  
+print(f"Subtotal: {subtotal:.2f}")
 print(f"IVA: {iva:.2f}")
-print(f"Total factura: {total_factura:.2f}")    
+print(f"Total factura: {total_factura:.2f}")
 
 
 UVT_2024 = 47065  # pesos
@@ -62,7 +58,9 @@ def calcular_impuesto():
     deduc_dep = 0.10 * ingresos_netos if dependientes == "si" else 0.0
     renta_exenta = 0.25 * (ingresos_netos - deduc_dep)
     base_gravable_pesos = ingresos_netos - deduc_dep - renta_exenta
-    base_gravable_uvt = base_gravable_pesos / UVT_2024
+
+    
+    base_gravable_uvt = base_gravable_pesos // UVT_2024  # <-- ojo aquí
 
     imp_uvt = impuesto_uvt(base_gravable_uvt)
     imp_pesos = imp_uvt * UVT_2024
@@ -83,7 +81,7 @@ def calcular_impuesto():
     else:
         print("Sin saldo a pagar ni a favor.")
 
-renta = calcular_impuesto() 
+renta = calcular_impuesto()
 
 
 def datos():
@@ -96,24 +94,27 @@ def datos():
 def fechas():
     print("Ingrese las fechas:")
     fecha_inicio = input("Fecha de inicio (DD/MM/AAAA): ")
-    fecha_fin = "Fecha de fin (DD/MM/AAAA): "
-    return fecha_inicio, fecha_fin
+    fecha_fin = input("Fecha de fin (DD/MM/AAAA): ")
+    
+    return fecha_fin, fecha_inicio
 
 julian = datos()
 print("Datos ingresados:", julian)
 
-import pandas as pd
+inicio, fin = fechas()
+print("Rango de fechas:", inicio, "->", fin)
+
+
+pd = "Pago diferido"
+
 print("Sistema de Registro Contable")
 
-
-
-#PARAMETROS DE NOMINA
+# PARAMETROS DE NOMINA
 Smmlv = float(1423500)
 Aux_Tranporte = float(200000)
 Base_Auxilio = Smmlv * 2
 
-
-#TABLA DE EMPLEADOS
+# TABLA DE EMPLEADOS
 empleados = pd.DataFrame(columns=["Id", "Nombre Empleado", "Salario"])
 
 def agregar_empleados(df, id, nombre, salario):
@@ -121,36 +122,32 @@ def agregar_empleados(df, id, nombre, salario):
         "Id": id,
         "Nombre Empleado": nombre,
         "Salario": salario
-    } 
-
+    }
     df = pd.concat([df, pd.DataFrame([nuevo_empleado])], ignore_index=True)
-    
-    #CALCULO DE AUXILIO DE TRANSPORTE
-    df["Auxilio Transporte"] = df["Salario"].apply(lambda x: Aux_Tranporte if x <= Base_Auxilio else 0)
 
+    # CALCULO DE AUXILIO DE TRANSPORTE
+    df["Auxilio Transporte"] = df["Salario"].apply(lambda x: Aux_Tranporte if x <= Base_Auxilio else 0)
     return df
 
 empleados = agregar_empleados(empleados, 1, "Luis Efanier", 4000000)
-empleados = agregar_empleados(empleados,2, "Gustavo Adolfo", 3000000)
+empleados = agregar_empleados(empleados, 2, "Gustavo Adolfo", 3000000)
 empleados = agregar_empleados(empleados, 3, "Darwin", 2000000)
 
 print(empleados)
 
 def mostrar_cliente():
-    clientes = ["Ana", "Carlos", "María","Jesus"] #Se Agrega un nuevo cliente para que el index sea el 3
-    print("El cuarto cliente es:", clientes[3])  
+    clientes = ["Ana", "Carlos", "María", "Jesus"]
+    print("El cuarto cliente es:", clientes[3])
 
 mostrar_cliente()
 
 def aplicar_descuento():
     precio = 1000
     descuento = 0
-    
     if descuento == 0:
         precio_final = precio
     else:
-        precio_final = precio / descuento #Se ajusta Division por cero
-
+        precio_final = precio / descuento
     print("Precio final:", precio_final)
 
 aplicar_descuento()
@@ -159,6 +156,6 @@ def calcular_balance():
     ingresos = 5000
     gastos = 3000
     balance = ingresos - gastos
-    return print(balance) #Se le quita el = al print()
+    return print(balance)
 
 calcular_balance()
