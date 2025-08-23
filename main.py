@@ -134,7 +134,7 @@ empleados = agregar_empleados(empleados, 3, "Darwin", 2000000)
 print(empleados)
 
 def mostrar_cliente():
-    clientes = ["Ana", "Carlos", "María"]
+    clientes = ["Ana", "Carlos", "María","Jesus"] #Se Agrega un nuevo cliente para que el index sea el 3
     print("El cuarto cliente es:", clientes[3])  
 
 mostrar_cliente()
@@ -142,7 +142,12 @@ mostrar_cliente()
 def aplicar_descuento():
     precio = 1000
     descuento = 0
-    precio_final = precio / descuento 
+    
+    if descuento == 0:
+        precio_final = precio
+    else:
+        precio_final = precio / descuento #Se ajusta Division por cero
+
     print("Precio final:", precio_final)
 
 aplicar_descuento()
@@ -151,6 +156,6 @@ def calcular_balance():
     ingresos = 5000
     gastos = 3000
     balance = ingresos - gastos
-    return print = (balance) 
+    return print(balance) #Se le quita el = al print()
 
 calcular_balance()
