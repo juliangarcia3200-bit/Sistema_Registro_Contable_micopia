@@ -96,7 +96,7 @@ def fechas():
     fecha_inicio = input("Fecha de inicio (DD/MM/AAAA): ")
     fecha_fin = input("Fecha de fin (DD/MM/AAAA): ")
     
-    return fecha_fin, fecha_inicio
+    return fecha_inicio,fecha_fin #Se corrige el orden de las fechas
 
 julian = datos()
 print("Datos ingresados:", julian)
