@@ -104,8 +104,7 @@ print("Datos ingresados:", julian)
 inicio, fin = fechas()
 print("Rango de fechas:", inicio, "->", fin)
 
-
-pd = "Pago diferido"
+# Se elimina Pd = "Pago diferido" ya que no se utiliza en el código
 
 print("Sistema de Registro Contable")
 
