@@ -60,7 +60,7 @@ def calcular_impuesto():
     base_gravable_pesos = ingresos_netos - deduc_dep - renta_exenta
 
     
-    base_gravable_uvt = base_gravable_pesos // UVT_2024
+    base_gravable_uvt = base_gravable_pesos / UVT_2024
 
     imp_uvt = impuesto_uvt(base_gravable_uvt)
     imp_pesos = imp_uvt * UVT_2024
