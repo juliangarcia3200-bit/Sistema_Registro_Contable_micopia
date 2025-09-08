@@ -284,3 +284,4 @@ if __name__ == "__main__":
         log.error("Error: %s", exc)
         sys.exit(1)
         print("hola")
+        print("hola otra vez")
