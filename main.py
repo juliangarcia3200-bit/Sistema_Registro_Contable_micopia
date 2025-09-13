@@ -148,9 +148,9 @@ def calcular_renta(inp: TaxInput) -> Dict[str, Decimal]:
     }
 
 
-# =====================
+
 # Fechas
-# =====================
+
 
 def parse_date(texto: str) -> date:
     """Parses DD/MM/AAAA to date; lanza ValueError si no coincide."""
@@ -174,9 +174,9 @@ def tabla_empleados(rows: List[Tuple[int, str, Decimal]]) -> pd.DataFrame:
     return df
 
 
-# =====================
+
 # CLI / Demos
-# =====================
+
 
 def demo_factura() -> None:
     productos = [
